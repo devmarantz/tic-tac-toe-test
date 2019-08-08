@@ -28,8 +28,15 @@ describe('displayWin', () => {
 });
 
 describe('displayTie', () => {
-  it.todo('should print out a board and say its a tie', () => {
+  it('should print out a board and say its a tie', () => {
     console.log = jest.fn();
+    const board = [['O', 'X', ' '], [' ', 'X', ' '], [' ', 'X', 'O']];
+    displayTie(board);
+    expect(console.log).toBeCalledTimes(2);
+    expect(console.log).toBeCalledWith(' O | X |   \n---|---|---\n   | X |   \n---|---|---\n   | X | O ');
+    expect(console.log).toBeCalledWith(`It's a tie! No one wins`);
+
+    console.log.mockClear();
   });
 });
 
